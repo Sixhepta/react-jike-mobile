@@ -13,3 +13,26 @@ export type ChannelRes = {
 };
 
 
+export type ListItem = {
+    art_id: string
+    title: string
+    aut_id: number
+    comm_count: string
+    is_top: number
+    pubdate:string
+    cover: {
+        type: number
+        images: string[]
+    }
+}
+
+export type ListRes = {
+    results: ListItem[]
+    pre_timestamp: string
+}
+
+export type ResParams={
+    channel_id: string
+    timestamp: string
+}
+
