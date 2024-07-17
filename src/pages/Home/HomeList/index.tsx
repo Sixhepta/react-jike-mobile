@@ -4,6 +4,7 @@ import { Image, InfiniteScroll, List } from "antd-mobile";
 import { useEffect, useState } from "react";
 import type { ListRes } from "@/apis/shared";
 import { fetchListAPI } from "@/apis/list";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   channelId: string;
@@ -61,12 +62,19 @@ const HomeList = (props: Props) => {
     // setHasMore(false)
   };
 
+  const navigate=useNavigate()
+  const goToDetail=(id:string)=>{
+    // 路由跳转
+    navigate(`/detail?id=${id}`)
+  }
+
   return (
     <>
       <List>
         {listRes.results.map((item) => (
           <List.Item
             key={item.art_id}
+            onClick={()=>goToDetail(item.art_id)}
             prefix={
               <Image
                 src={item.cover.images?.[0]}
